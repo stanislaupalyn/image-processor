@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "image.h"
+#include "core/image.h"
 
 struct FilterSettings {
     std::string name_;

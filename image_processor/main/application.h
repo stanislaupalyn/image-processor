@@ -5,23 +5,23 @@
 
 /// Utils and components
 #include "application_settings.h"
-#include "bmp.h"
-#include "bmp_image_converter.h"
+#include "io/bmp.h"
+#include "core/bmp_image_converter.h"
 #include "command_line_parser.h"
-#include "filter.h"
-#include "filter_factory.h"
-#include "image.h"
-#include "pipeline.h"
-#include "rgb_color.h"
+#include "filters/filter.h"
+#include "factory/filter_factory.h"
+#include "core/image.h"
+#include "core/pipeline.h"
+#include "core/rgb_color.h"
 
 /// Filters
-#include "crop_filter.h"
-#include "edge_detection_filter.h"
-#include "gaussian_blur_filter.h"
-#include "grayscale_filter.h"
-#include "negative_filter.h"
-#include "sharpening_filter.h"
-#include "fisheye_filter.h"
+#include "filters/crop_filter.h"
+#include "filters/edge_detection_filter.h"
+#include "filters/gaussian_blur_filter.h"
+#include "filters/grayscale_filter.h"
+#include "filters/negative_filter.h"
+#include "filters/sharpening_filter.h"
+#include "filters/fisheye_filter.h"
 
 class Application {
 private:

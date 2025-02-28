@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "rgb_color.h"
+#include "core/rgb_color.h"
 
 /// Class supports BMP file storage.
 /// Methods for writing content to a specific file path

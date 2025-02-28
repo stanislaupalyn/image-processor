@@ -1,26 +1,28 @@
-# add_library(application STATIC application.cpp)
-# add_library(application_settings STATIC application_settings.cpp)
-# add_library(command_line_parser STATIC command_line_parser.cpp)
-# add_library(filter_factory STATIC filter_factory.cpp)
-# add_library(filter STATIC filter.cpp)
-# add_library(bmp STATIC bmp.cpp)
+cmake_minimum_required(VERSION 3.30)
+project(image_processor)
 
-add_executable(image_processor image_processor.cpp 
-               application application.cpp
-               application_settings application_settings.cpp
-               command_line_parser command_line_parser.cpp
-               filter_factory filter_factory.cpp
-               bmp bmp.cpp
-               filter filter.cpp
-               crop_filter crop_filter.cpp
-               grayscale_filter grayscale_filter.cpp
-               negative_filter negative_filter.cpp
-               sharpening_filter sharpening_filter.cpp
-               edge_detection_filter edge_detection_filter.cpp
-               pipeline pipeline.cpp
-               rgb_color rgb_color.cpp
-               image image.cpp
-               bmp_image_converter bmp_image_converter.cpp
-               gaussian_blur_filter gaussian_blur_filter.cpp
-               fisheye_filter fisheye_filter.cpp)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+set(SRC_DIR ${CMAKE_SOURCE_DIR}/image_processor)
+set(MAIN_DIR ${SRC_DIR}/main)
+set(CORE_DIR ${SRC_DIR}/core)
+set(FILTERS_DIR ${SRC_DIR}/filters)
+set(FACTORY_DIR ${SRC_DIR}/factory)
+set(IO_DIR ${SRC_DIR}/io)
+
+file(GLOB MAIN_SRC ${MAIN_DIR}/*.cpp)
+file(GLOB CORE_SRC ${CORE_DIR}/*.cpp)
+file(GLOB FILTERS_SRC ${FILTERS_DIR}/*.cpp)
+file(GLOB FACTORY_SRC ${FACTORY_DIR}/*.cpp)
+file(GLOB IO_SRC ${IO_DIR}/*.cpp)
+
+add_executable(image_processor
+        ${MAIN_SRC}
+        ${CORE_SRC}
+        ${FILTERS_SRC}
+        ${FACTORY_SRC}
+        ${IO_SRC}
+)
+
+include_directories(${SRC_DIR})

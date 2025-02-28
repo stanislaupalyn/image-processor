@@ -3,7 +3,7 @@
 #include <map>
 #include <functional>
 
-#include "filter.h"
+#include "filters/filter.h"
 
 using FilterProducer = std::function<Filter*(const FilterSettings&)>;
 

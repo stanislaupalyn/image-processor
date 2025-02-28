@@ -1,5 +1,5 @@
-#include "bmp.h"
-#include "image.h"
+#include "io/bmp.h"
+#include "core/image.h"
 
 class BMPImageConverter {
 public:
