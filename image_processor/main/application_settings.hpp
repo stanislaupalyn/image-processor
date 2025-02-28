@@ -2,7 +2,8 @@
 
 #include <string>
 
-#include "filters/filter.h"
+#include "filters/filter.hpp"
+#include "filters/filter_settings.hpp"
 
 struct ApplicationSettings {
     std::string input_file_path_;

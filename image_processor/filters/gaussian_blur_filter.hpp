@@ -2,7 +2,9 @@
 
 #include <stdexcept>
 
-#include "filter.h"
+#include "filter.hpp"
+#include "filter_settings.hpp"
+#include "main/error_code.hpp"
 
 class GaussianBlurFilter : public Filter {
 public:
@@ -15,4 +17,4 @@ protected:
     std::vector<double> filter_vector;
 };
 
-Filter* ProduceGaussianBlurFilter(const FilterSettings& filter_settings);
+Filter* ProduceGaussianBlurFilter(const FilterSettings& filter_settings, ErrorCode& error);

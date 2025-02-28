@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "rgb_color.h"
+#include "rgb_color.hpp"
 
 /// Class that represents an image stored in a bitmap.
 /// Each pixel color is specified in data_ vector of RGBReal

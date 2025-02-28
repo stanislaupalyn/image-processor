@@ -23,6 +23,9 @@ add_executable(image_processor
         ${FILTERS_SRC}
         ${FACTORY_SRC}
         ${IO_SRC}
+        image_processor/filters/filter_settings.hpp
+        image_processor/main/error_code.cpp
+        image_processor/main/error_code.hpp
 )
 
 include_directories(${SRC_DIR})

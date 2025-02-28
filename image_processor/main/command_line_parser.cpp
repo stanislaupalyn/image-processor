@@ -1,13 +1,14 @@
-#include "command_line_parser.h"
+#include "command_line_parser.hpp"
 #include <stdexcept>
 
 bool CommandLineParser::IsFilterName(const std::string& s) {
     return s.size() > 1 && s[0] == '-' && std::all_of(s.begin() + 1, s.end(), [](char c) { return islower(c); });
 }
 
-void CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& app_settings) {
+ErrorCode CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& app_settings) {
     if (argc < 3) {
-        throw std::invalid_argument("Input or output file is not specified.");
+        std::cerr << "Input or output file is not specified. Usage" << argv[0] << " <input.bmp> <output.bmp>\n";
+        return ErrorCode::INVALID_ARGUMENTS;
     }
 
     app_settings.input_file_path_ = argv[1];
@@ -28,4 +29,5 @@ void CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& app_s
             app_settings.filters_settings_.push_back(filter_settings);
         }
     }
+    return ErrorCode::SUCCESS;
 }

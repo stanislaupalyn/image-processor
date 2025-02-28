@@ -1,6 +1,6 @@
 #pragma once
 
-#include "filters/filter.h"
+#include "filters/filter.hpp"
 
 class Pipeline {
 public:

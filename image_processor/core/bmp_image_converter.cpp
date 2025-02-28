@@ -1,4 +1,4 @@
-#include "bmp_image_converter.h"
+#include "bmp_image_converter.hpp"
 
 Image BMPImageConverter::GetImageFromBMP(const BMP& bmp) {
     Image image;

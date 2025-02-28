@@ -2,7 +2,9 @@
 
 #include <stdexcept>
 
-#include "filter.h"
+#include "filter.hpp"
+#include "filter_settings.hpp"
+#include "main/error_code.hpp"
 
 class GrayscaleFilter : public Filter {
 public:
@@ -16,4 +18,4 @@ protected:
     static constexpr double BLUE_COEF = 0.114;   // NOLINT
 };
 
-Filter* ProduceGrayscaleFilter(const FilterSettings& filter_settings);
+Filter* ProduceGrayscaleFilter(const FilterSettings& filter_settings, ErrorCode& error);

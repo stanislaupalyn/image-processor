@@ -8,7 +8,7 @@ class RGB24;
 
 class RGBReal {
 public:
-    static constexpr double MAX_COLOR_VALUE = 255.0;  // NOLINT
+    static constexpr double MaxColorValue = 255.0;
 
     double b_;
     double g_;

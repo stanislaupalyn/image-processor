@@ -4,8 +4,10 @@
 #include <stdexcept>
 #include <string>
 
-#include "filter.h"
-#include "grayscale_filter.h"
+#include "filter.hpp"
+#include "filter_settings.hpp"
+#include "grayscale_filter.hpp"
+#include "main/error_code.hpp"
 
 class EdgeDetectionFilter : public Filter {
 public:
@@ -21,4 +23,4 @@ protected:
     double threshold_;
 };
 
-Filter* ProduceEdgeDetectionFilter(const FilterSettings& filter_settings);
+Filter* ProduceEdgeDetectionFilter(const FilterSettings& filter_settings, ErrorCode& error);

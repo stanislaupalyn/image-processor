@@ -1,4 +1,4 @@
-#include "pipeline.h"
+#include "pipeline.hpp"
 
 Pipeline::~Pipeline() {
     for (Filter* filter : filters_) {

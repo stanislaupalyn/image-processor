@@ -3,12 +3,13 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "application_settings.h"
+#include "error_code.hpp"
+#include "application_settings.hpp"
 
 class CommandLineParser {
 
 public:
-    void Parse(int argc, char* argv[], ApplicationSettings& app_settings);
+    ErrorCode Parse(int argc, char* argv[], ApplicationSettings& app_settings);
 
 protected:
     bool IsFilterName(const std::string& s);

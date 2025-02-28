@@ -1,5 +1,10 @@
-#include "grayscale_filter.h"
+#include "grayscale_filter.hpp"
+
+#include <cassert>
+#include <iostream>
 #include <stdexcept>
+
+#include "main/error_code.hpp"
 
 void GrayscaleFilter::Apply(Image& image) {
     for (size_t row = 0; row < image.GetHeight(); ++row) {
@@ -11,13 +16,15 @@ void GrayscaleFilter::Apply(Image& image) {
     }
 }
 
-Filter* ProduceGrayscaleFilter(const FilterSettings& filter_settings) {
-    if (filter_settings.name_ != "gs") {
-        throw std::logic_error("Trying to produce filter with another filter settings.");
-    }
+Filter* ProduceGrayscaleFilter(const FilterSettings& filter_settings, ErrorCode& error) {
+    assert(filter_settings.name_ == "gs");
+
     if (!filter_settings.arguments_.empty()) {
-        throw std::invalid_argument("Wrong number of arguments for grayscale filter.");
+        std::cerr << "Wrong number of arguments for grayscale filter.\n";
+        error = ErrorCode::INVALID_ARGUMENTS;
+        return nullptr;
     }
     Filter* filter_ptr = new GrayscaleFilter();
+    error = ErrorCode::SUCCESS;
     return filter_ptr;
 }

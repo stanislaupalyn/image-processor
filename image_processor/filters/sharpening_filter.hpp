@@ -3,7 +3,9 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "filter.h"
+#include "filter.hpp"
+#include "filter_settings.hpp"
+#include "main/error_code.hpp"
 
 class SharpeningFilter : public Filter {
 public:
@@ -18,4 +20,4 @@ protected:
                                                    {0.0, -1.0, 0.0}};
 };
 
-Filter* ProduceSharpeningFilter(const FilterSettings& filter_settings);
+Filter* ProduceSharpeningFilter(const FilterSettings& filter_settings, ErrorCode& error);

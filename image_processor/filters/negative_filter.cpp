@@ -1,5 +1,10 @@
-#include "negative_filter.h"
+#include "negative_filter.hpp"
+
+#include <cassert>
+#include <iostream>
 #include <stdexcept>
+
+#include "main/error_code.hpp"
 
 void NegativeFilter::Apply(Image& image) {
     for (size_t row = 0; row < image.GetHeight(); ++row) {
@@ -9,13 +14,15 @@ void NegativeFilter::Apply(Image& image) {
     }
 }
 
-Filter* ProduceNegativeFilter(const FilterSettings& filter_settings) {
-    if (filter_settings.name_ != "neg") {
-        throw std::logic_error("Trying to produce filter with another filter settings.");
-    }
+Filter* ProduceNegativeFilter(const FilterSettings& filter_settings, ErrorCode& error) {
+    assert(filter_settings.name_ != "neg");
+
     if (!filter_settings.arguments_.empty()) {
-        throw std::invalid_argument("Wrong number of arguments for negative filter.");
+        std::cerr << "Wrong number of arguments for negative filter.\n";
+        error = ErrorCode::INVALID_ARGUMENTS;
+        return nullptr;
     }
     Filter* filter_ptr = new NegativeFilter();
+    error = ErrorCode::SUCCESS;
     return filter_ptr;
 }

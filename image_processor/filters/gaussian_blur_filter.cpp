@@ -1,5 +1,10 @@
-#include "gaussian_blur_filter.h"
+#include "gaussian_blur_filter.hpp"
+
+#include <cassert>
+#include <iostream>
 #include <stdexcept>
+
+#include "main/error_code.hpp"
 
 GaussianBlurFilter::GaussianBlurFilter(double sigma) {
     size_t size = static_cast<size_t>(ceil(SIGMA_SIZE_CONST * sigma));
@@ -115,23 +120,29 @@ void GaussianBlurFilter::Apply(Image& image) {
     }
 }
 
-Filter* ProduceGaussianBlurFilter(const FilterSettings& filter_settings) {
-    if (filter_settings.name_ != "blur") {
-        throw std::logic_error("Trying to produce filter with another filter settings.");
-    }
+Filter* ProduceGaussianBlurFilter(const FilterSettings& filter_settings, ErrorCode& error) {
+    assert(filter_settings.name_ == "blur");
+
     if (filter_settings.arguments_.size() != 1) {
-        throw std::invalid_argument("Wrong number of arguments for Gaussian blur filter.");
+        std::cerr << "Wrong number of arguments for Gaussian blur filter.\n";
+        error = ErrorCode::INVALID_ARGUMENTS;
+        return nullptr;
     }
     double sigma = std::stod(filter_settings.arguments_[0]);
 
     if (sigma <= 0) {
-        throw std::invalid_argument("Sigma in the gaussian blur fliter should be positive.");
+        std::cerr << "Sigma in the gaussian blur fliter should be positive.\n";
+        error = ErrorCode::INVALID_ARGUMENTS;
+        return nullptr;
     }
     if (sigma > GaussianBlurFilter::MAX_SIGMA_VALUE) {
-        throw std::invalid_argument("Sigma exceeds the maximum specified value (equals " +
-                                    std::to_string(GaussianBlurFilter::MAX_SIGMA_VALUE) +
-                                    ") for the Gaussian blur filter.");
+        std::cerr << "Sigma exceeds the maximum specified value (equals " << GaussianBlurFilter::MAX_SIGMA_VALUE
+                  << ") for the Gaussian blur filter.\n";
+
+        error = ErrorCode::INVALID_ARGUMENTS;
+        return nullptr;
     }
     Filter* filter_ptr = new GaussianBlurFilter(sigma);
+    error = ErrorCode::SUCCESS;
     return filter_ptr;
 }

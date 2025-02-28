@@ -2,12 +2,7 @@
 
 #include <string>
 
-#include "core/image.h"
-
-struct FilterSettings {
-    std::string name_;
-    std::vector<std::string> arguments_;
-};
+#include "core/image.hpp"
 
 class Filter {
 public:

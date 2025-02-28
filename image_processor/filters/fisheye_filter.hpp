@@ -2,7 +2,9 @@
 
 #include <stdexcept>
 
-#include "filter.h"
+#include "filter.hpp"
+#include "filter_settings.hpp"
+#include "main/error_code.hpp"
 
 // -fisheye alpha center_x center_y
 // Applies to the image the distortion of the fisheye lens centered in coordinates (center_x, center_y).
@@ -29,4 +31,4 @@ protected:
     double GetRadialY(double x, double y) const;
 };
 
-Filter* ProduceFisheyeFilter(const FilterSettings& filter_settings);
+Filter* ProduceFisheyeFilter(const FilterSettings& filter_settings, ErrorCode& error);

@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "core/rgb_color.h"
+#include "core/rgb_color.hpp"
 
 /// Class supports BMP file storage.
 /// Methods for writing content to a specific file path
@@ -63,13 +63,13 @@ public:
         return dib_header_;
     }
 
-    const int32_t& GetHeight() const {
+    int32_t GetHeight() const {
         return dib_header_.height;
     }
     int32_t& GetHeight() {
         return dib_header_.height;
     }
-    const int32_t& GetWidth() const {
+    int32_t GetWidth() const {
         return dib_header_.width;
     }
     int32_t& GetWidth() {

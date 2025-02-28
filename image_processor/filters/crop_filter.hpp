@@ -2,7 +2,9 @@
 
 #include <stdexcept>
 
-#include "filter.h"
+#include "filter.hpp"
+#include "filter_settings.hpp"
+#include "main/error_code.hpp"
 
 class CropFilter : public Filter {
 public:
@@ -15,4 +17,4 @@ protected:
     size_t height_;
 };
 
-Filter* ProduceCropFilter(const FilterSettings& filter_settings);
+Filter* ProduceCropFilter(const FilterSettings& filter_settings, ErrorCode& error);
