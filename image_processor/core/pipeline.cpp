@@ -6,7 +6,7 @@ Pipeline::~Pipeline() {
     }
 }
 
-void Pipeline::ApplyPipeline(Image& image) {
+void Pipeline::ApplyPipeline(Image& image) const {
     for (Filter* filter : filters_) {
         filter->Apply(image);
     }

@@ -2,11 +2,10 @@
 
 #include <cassert>
 #include <iostream>
-#include <stdexcept>
 
 #include "main/error_code.hpp"
 
-RGBReal FisheyeFilter::GetPixel(double x, double y, const Image& image) const {
+RGBReal FisheyeFilter::GetPixel(double x, double y, const Image& image) {
     if (x < 0 || y < 0 || std::floor(x) >= static_cast<double>(image.GetHeight()) ||
         std::floor(y) >= static_cast<double>(image.GetWidth())) {
         return {0, 0, 0};

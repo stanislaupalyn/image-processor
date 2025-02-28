@@ -4,8 +4,7 @@ int main(int argc, char* argv[]) {
     Application app;
     app.Config();
 
-    ErrorCode result = app.Start(argc, argv);
-    if (result != ErrorCode::SUCCESS) {
+    if (ErrorCode result = app.Start(argc, argv); result != ErrorCode::SUCCESS) {
         return static_cast<int>(result);
     }
 

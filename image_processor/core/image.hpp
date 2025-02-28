@@ -14,17 +14,17 @@ public:
     Image() : height_{0}, width_{0}, data_{0} {
     }
 
-    const size_t GetHeight() const {
+    size_t GetHeight() const {
         return height_;
     }
-    size_t& GetHeight() {
-        return height_;
+    void SetHeight(size_t x) {
+        height_ = x;
     }
-    const size_t GetWidth() const {
+    size_t GetWidth() const {
         return width_;
     }
-    size_t& GetWidth() {
-        return width_;
+    void SetWidth(size_t x) {
+        width_ = x;
     }
 
     std::vector<RGBReal>& GetData() {

@@ -1,12 +1,7 @@
 #pragma once
 
-#include <algorithm>
-#include <stdexcept>
-#include <string>
-
 #include "filter.hpp"
 #include "filter_settings.hpp"
-#include "grayscale_filter.hpp"
 #include "main/error_code.hpp"
 
 class EdgeDetectionFilter : public Filter {

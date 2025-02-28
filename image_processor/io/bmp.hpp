@@ -14,8 +14,8 @@
 
 class BMP {
 public:
-    static const uint16_t BMP_SIGNATURE = 0x4D42;  // BM
-    static const uint16_t BMP_BITS_PER_PIXEL = 24;
+    static constexpr uint16_t BMP_SIGNATURE = 0x4D42;   // NOLINT
+    static constexpr uint16_t BMP_BITS_PER_PIXEL = 24;  // NOLINT
 
     struct BMPHeader {
         uint16_t signature;
@@ -39,8 +39,7 @@ public:
         uint32_t important_colors_num;
     } __attribute__((packed));
 
-public:
-    BMP() {
+    BMP() : bmp_header_(), dib_header_() {
     }
 
     ~BMP() {
@@ -48,7 +47,7 @@ public:
 
     void ReadFromFile(const std::string& filename);
 
-    void WriteToFile(const std::string& filename);
+    void WriteToFile(const std::string& filename) const;
 
     BMPHeader& GetBMPHeader() {
         return bmp_header_;
@@ -85,16 +84,16 @@ public:
 
 protected:
     /// File I/O
-    std::fstream OpenToRead(const std::string& filename);
-    std::fstream OpenToWrite(const std::string& filename);
+    static std::fstream OpenToRead(const std::string& filename);
+    static std::fstream OpenToWrite(const std::string& filename);
     void ReadBmp(std::fstream& file);
-    void WriteBmp(std::fstream& file);
+    void WriteBmp(std::fstream& file) const;
     void ReadBmpHeader(std::fstream& file);
     void ReadDibHeader(std::fstream& file);
     void ReadData(std::fstream& file);
-    void WriteBmpHeader(std::fstream& file);
-    void WriteDibHeader(std::fstream& file);
-    void WriteData(std::fstream& file);
+    void WriteBmpHeader(std::fstream& file) const;
+    void WriteDibHeader(std::fstream& file) const;
+    void WriteData(std::fstream& file) const;
 
 protected:
     BMPHeader bmp_header_;

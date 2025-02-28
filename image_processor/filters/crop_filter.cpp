@@ -2,14 +2,13 @@
 
 #include <cassert>
 #include <iostream>
-#include <stdexcept>
 
 #include "main/error_code.hpp"
 
 void CropFilter::Apply(Image& image) {
     if (image.GetHeight() > height_) {
         size_t extra = image.GetHeight() - height_;
-        image.GetHeight() = height_;
+        image.SetHeight(height_);
         image.GetData().erase(
             image.GetData().begin(),
             image.GetData().begin() + static_cast<int32_t>(extra) * static_cast<int32_t>(image.GetWidth()));
@@ -23,7 +22,7 @@ void CropFilter::Apply(Image& image) {
                 new_data.push_back(image(row, col));
             }
         }
-        image.GetWidth() = width_;
+        image.SetWidth(width_);
         image.GetData() = new_data;
     }
 }

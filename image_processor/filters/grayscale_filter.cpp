@@ -2,7 +2,6 @@
 
 #include <cassert>
 #include <iostream>
-#include <stdexcept>
 
 #include "main/error_code.hpp"
 

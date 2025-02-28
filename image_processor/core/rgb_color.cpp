@@ -7,7 +7,6 @@ RGBReal::operator RGB24() const {
 }
 
 RGB24::operator RGBReal() const {
-    return RGBReal{static_cast<double>(b_) / RGBReal::MaxColorValue,
-                   static_cast<double>(g_) / RGBReal::MaxColorValue,
+    return RGBReal{static_cast<double>(b_) / RGBReal::MaxColorValue, static_cast<double>(g_) / RGBReal::MaxColorValue,
                    static_cast<double>(r_) / RGBReal::MaxColorValue};
 }

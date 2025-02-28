@@ -131,7 +131,7 @@ Filter* ProduceGaussianBlurFilter(const FilterSettings& filter_settings, ErrorCo
     double sigma = std::stod(filter_settings.arguments_[0]);
 
     if (sigma <= 0) {
-        std::cerr << "Sigma in the gaussian blur fliter should be positive.\n";
+        std::cerr << "Sigma in the gaussian blur filter should be positive.\n";
         error = ErrorCode::INVALID_ARGUMENTS;
         return nullptr;
     }

@@ -1,5 +1,13 @@
 #include "application.hpp"
 
+#include "filters/crop_filter.hpp"
+#include "filters/edge_detection_filter.hpp"
+#include "filters/fisheye_filter.hpp"
+#include "filters/gaussian_blur_filter.hpp"
+#include "filters/grayscale_filter.hpp"
+#include "filters/negative_filter.hpp"
+#include "filters/sharpening_filter.hpp"
+
 void Application::Config() {
     f_factory_.AddProducer("crop", ProduceCropFilter);
     f_factory_.AddProducer("gs", ProduceGrayscaleFilter);
@@ -14,8 +22,7 @@ ErrorCode Application::Start(int argc, char** argv) {
     auto start_time = std::chrono::high_resolution_clock::now();
 
     try {
-        ErrorCode result = cl_parser_.Parse(argc, argv, app_settings_);
-        if (result != ErrorCode::SUCCESS) {
+        if (ErrorCode result = cl_parser_.Parse(argc, argv, app_settings_); result != ErrorCode::SUCCESS) {
             return result;
         }
 
@@ -25,11 +32,11 @@ ErrorCode Application::Start(int argc, char** argv) {
                 std::cerr << "Filter with the given name does not exist.\n";
                 return ErrorCode::INVALID_ARGUMENTS;
             }
-            ErrorCode error{};
-            Filter* filter = filter_producer(filter_settings, error);
+            ErrorCode result{};
+            Filter* filter = filter_producer(filter_settings, result);
 
             if (!filter) {
-                return error;
+                return result;
             }
             pipeline_.AddFilter(filter);
         }
@@ -44,8 +51,10 @@ ErrorCode Application::Start(int argc, char** argv) {
         bmp.WriteToFile(app_settings_.output_file_path_);
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
+        return ErrorCode::EXCEPTION;
     } catch (...) {
         std::cerr << "Unknown exception.\n";
+        return ErrorCode::EXCEPTION;
     }
 
     auto cur_time = std::chrono::high_resolution_clock::now();

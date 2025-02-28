@@ -3,8 +3,8 @@
 Image BMPImageConverter::GetImageFromBMP(const BMP& bmp) {
     Image image;
 
-    image.GetWidth() = bmp.GetDIBHeader().width;
-    image.GetHeight() = bmp.GetDIBHeader().height;
+    image.SetWidth(bmp.GetDIBHeader().width);
+    image.SetHeight(bmp.GetDIBHeader().height);
     image.GetData().resize(image.GetHeight() * image.GetWidth());
 
     for (size_t i = 0; i < image.GetData().size(); ++i) {
@@ -13,8 +13,8 @@ Image BMPImageConverter::GetImageFromBMP(const BMP& bmp) {
     return image;
 }
 
-BMP BMPImageConverter::GetBMPFromImage(const Image& image, BMP::BMPHeader reference_bmp_header,
-                                       BMP::DIBHeader reference_dib_header) {
+BMP BMPImageConverter::GetBMPFromImage(const Image& image, const BMP::BMPHeader& reference_bmp_header,
+                                       const BMP::DIBHeader& reference_dib_header) {
     BMP bmp;
 
     bmp.GetBMPHeader() = reference_bmp_header;

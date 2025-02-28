@@ -1,10 +1,13 @@
-#include "io/bmp.hpp"
+#pragma once
+
 #include "core/image.hpp"
+#include "io/bmp.hpp"
 
 class BMPImageConverter {
 public:
-    Image GetImageFromBMP(const BMP& bmp);
-    BMP GetBMPFromImage(const Image& image, BMP::BMPHeader reference_bmp_header, BMP::DIBHeader reference_dib_header);
+    static Image GetImageFromBMP(const BMP& bmp);
+    static BMP GetBMPFromImage(const Image& image, const BMP::BMPHeader& reference_bmp_header,
+                               const BMP::DIBHeader& reference_dib_header);
 
 protected:
 };

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 #include "core/image.hpp"
 
 class Filter {

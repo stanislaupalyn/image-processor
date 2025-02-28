@@ -2,8 +2,8 @@
 
 #include <cassert>
 #include <iostream>
-#include <stdexcept>
 
+#include "filters/grayscale_filter.hpp"
 #include "main/error_code.hpp"
 
 void EdgeDetectionFilter::Apply(Image& image) {

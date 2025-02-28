@@ -1,5 +1,4 @@
 #include "command_line_parser.hpp"
-#include <stdexcept>
 
 bool CommandLineParser::IsFilterName(const std::string& s) {
     return s.size() > 1 && s[0] == '-' && std::all_of(s.begin() + 1, s.end(), [](char c) { return islower(c); });
