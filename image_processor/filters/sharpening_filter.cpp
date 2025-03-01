@@ -47,16 +47,3 @@ void SharpeningFilter::Apply(Image& image) {
 
     image.GetData() = new_data;
 }
-
-Filter* ProduceSharpeningFilter(const FilterSettings& filter_settings, ErrorCode& error) {
-    assert(filter_settings.name_ == "sharp");
-
-    if (!filter_settings.arguments_.empty()) {
-        std::cerr << "Wrong number of arguments for sharpening filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    Filter* filter_ptr = new SharpeningFilter();
-    error = ErrorCode::SUCCESS;
-    return filter_ptr;
-}

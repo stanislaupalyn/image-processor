@@ -22,5 +22,3 @@ protected:
     static constexpr double GREEN_COEF = 0.587;  // NOLINT
     static constexpr double BLUE_COEF = 0.114;   // NOLINT
 };
-
-Filter* ProduceGrayscaleFilter(const FilterSettings& filter_settings, ErrorCode& error);

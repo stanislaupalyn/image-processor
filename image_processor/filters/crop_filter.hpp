@@ -21,5 +21,3 @@ protected:
     size_t width_;
     size_t height_;
 };
-
-Filter* ProduceCropFilter(const FilterSettings& filter_settings, ErrorCode& error);

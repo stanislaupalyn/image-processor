@@ -20,5 +20,3 @@ public:
 
 protected:
 };
-
-Filter* ProduceNegativeFilter(const FilterSettings& filter_settings, ErrorCode& error);

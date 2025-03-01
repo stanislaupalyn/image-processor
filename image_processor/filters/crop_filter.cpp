@@ -26,25 +26,3 @@ void CropFilter::Apply(Image& image) {
         image.GetData() = new_data;
     }
 }
-
-Filter* ProduceCropFilter(const FilterSettings& filter_settings, ErrorCode& error) {
-    assert(filter_settings.name_ == "crop");
-
-    if (filter_settings.arguments_.size() != 2) {
-        std::cerr << "Wrong number of arguments for crop filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    int32_t width = std::stoi(filter_settings.arguments_[0]);
-    int32_t height = std::stoi(filter_settings.arguments_[1]);
-
-    if (width <= 0 || height <= 0) {
-        std::cerr << "Width and height should be positive in crop filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-
-    Filter* filter_ptr = new CropFilter(static_cast<size_t>(width), static_cast<size_t>(height));
-    error = ErrorCode::SUCCESS;
-    return filter_ptr;
-}

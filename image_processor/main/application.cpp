@@ -1,21 +1,22 @@
 #include "application.hpp"
 
-#include "filters/crop_filter.hpp"
-#include "filters/edge_detection_filter.hpp"
-#include "filters/fisheye_filter.hpp"
+#include "filters/crop_filter_producer.hpp"
+#include "filters/edge_detection_filter_producer.hpp"
+#include "filters/fisheye_filter_producer.hpp"
 #include "filters/gaussian_blur_filter.hpp"
-#include "filters/grayscale_filter.hpp"
-#include "filters/negative_filter.hpp"
-#include "filters/sharpening_filter.hpp"
+#include "filters/gaussian_blur_filter_producer.hpp"
+#include "filters/grayscale_filter_producer.hpp"
+#include "filters/negative_filter_producer.hpp"
+#include "filters/sharpening_filter_producer.hpp"
 
 void Application::Config() {
-    f_factory_.AddProducer("crop", ProduceCropFilter);
-    f_factory_.AddProducer("gs", ProduceGrayscaleFilter);
-    f_factory_.AddProducer("neg", ProduceNegativeFilter);
-    f_factory_.AddProducer("sharp", ProduceSharpeningFilter);
-    f_factory_.AddProducer("edge", ProduceEdgeDetectionFilter);
-    f_factory_.AddProducer("blur", ProduceGaussianBlurFilter);
-    f_factory_.AddProducer("fisheye", ProduceFisheyeFilter);
+    f_factory_.AddProducer("crop", new CropFilterProducer());
+    f_factory_.AddProducer("gs", new GrayscaleFilterProducer());
+    f_factory_.AddProducer("neg", new NegativeFilterProducer());
+    f_factory_.AddProducer("sharp", new SharpeningFilterProducer());
+    f_factory_.AddProducer("edge", new EdgeDetectionFilterProducer());
+    f_factory_.AddProducer("blur", new GaussianBlurFilterProducer());
+    f_factory_.AddProducer("fisheye", new FisheyeFilterProducer());
 }
 
 ErrorCode Application::Start(int argc, char** argv) {
@@ -27,18 +28,12 @@ ErrorCode Application::Start(int argc, char** argv) {
         }
 
         for (const FilterSettings& filter_settings : app_settings_.filters_settings_) {
-            FilterProducer filter_producer = f_factory_.GetProducer(filter_settings.name_);
+            FilterProducer* filter_producer = f_factory_.GetProducer(filter_settings.name_);
             if (!filter_producer) {
                 std::cerr << "Filter with the given name does not exist.\n";
                 return ErrorCode::INVALID_ARGUMENTS;
             }
-            ErrorCode result{};
-            Filter* filter = filter_producer(filter_settings, result);
-
-            if (!filter) {
-                return result;
-            }
-            pipeline_.AddFilter(filter);
+            pipeline_.AddFilter(filter_producer->Produce(filter_settings));
         }
 
         BMP bmp;
@@ -49,6 +44,8 @@ ErrorCode Application::Start(int argc, char** argv) {
 
         bmp = bmp_image_converter_.GetBMPFromImage(image, bmp.GetBMPHeader(), bmp.GetDIBHeader());
         bmp.WriteToFile(app_settings_.output_file_path_);
+    } catch (std::invalid_argument& e) {
+        std::cerr << "Invalid input: " << e.what() << "\n";
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << "\n";
         return ErrorCode::EXCEPTION;

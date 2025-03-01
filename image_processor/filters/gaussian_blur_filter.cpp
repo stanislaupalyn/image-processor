@@ -119,30 +119,3 @@ void GaussianBlurFilter::Apply(Image& image) {
         image.GetData() = new_data;
     }
 }
-
-Filter* ProduceGaussianBlurFilter(const FilterSettings& filter_settings, ErrorCode& error) {
-    assert(filter_settings.name_ == "blur");
-
-    if (filter_settings.arguments_.size() != 1) {
-        std::cerr << "Wrong number of arguments for Gaussian blur filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    double sigma = std::stod(filter_settings.arguments_[0]);
-
-    if (sigma <= 0) {
-        std::cerr << "Sigma in the gaussian blur filter should be positive.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    if (sigma > GaussianBlurFilter::MAX_SIGMA_VALUE) {
-        std::cerr << "Sigma exceeds the maximum specified value (equals " << GaussianBlurFilter::MAX_SIGMA_VALUE
-                  << ") for the Gaussian blur filter.\n";
-
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    Filter* filter_ptr = new GaussianBlurFilter(sigma);
-    error = ErrorCode::SUCCESS;
-    return filter_ptr;
-}

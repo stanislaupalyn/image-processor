@@ -31,5 +31,3 @@ protected:
     double GetRadialX(double x, double y) const;
     double GetRadialY(double x, double y) const;
 };
-
-Filter* ProduceFisheyeFilter(const FilterSettings& filter_settings, ErrorCode& error);

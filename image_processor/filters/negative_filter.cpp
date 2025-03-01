@@ -12,16 +12,3 @@ void NegativeFilter::Apply(Image& image) {
         }
     }
 }
-
-Filter* ProduceNegativeFilter(const FilterSettings& filter_settings, ErrorCode& error) {
-    assert(filter_settings.name_ == "neg");
-
-    if (!filter_settings.arguments_.empty()) {
-        std::cerr << "Wrong number of arguments for negative filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    Filter* filter_ptr = new NegativeFilter();
-    error = ErrorCode::SUCCESS;
-    return filter_ptr;
-}

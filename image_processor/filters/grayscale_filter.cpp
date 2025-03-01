@@ -14,16 +14,3 @@ void GrayscaleFilter::Apply(Image& image) {
         }
     }
 }
-
-Filter* ProduceGrayscaleFilter(const FilterSettings& filter_settings, ErrorCode& error) {
-    assert(filter_settings.name_ == "gs");
-
-    if (!filter_settings.arguments_.empty()) {
-        std::cerr << "Wrong number of arguments for grayscale filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-    Filter* filter_ptr = new GrayscaleFilter();
-    error = ErrorCode::SUCCESS;
-    return filter_ptr;
-}

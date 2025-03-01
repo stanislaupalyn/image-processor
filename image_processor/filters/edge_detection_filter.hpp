@@ -25,5 +25,3 @@ protected:
                                                    {0.0, -1.0, 0.0}};
     double threshold_;
 };
-
-Filter* ProduceEdgeDetectionFilter(const FilterSettings& filter_settings, ErrorCode& error);

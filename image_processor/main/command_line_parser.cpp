@@ -10,7 +10,6 @@ ErrorCode CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& 
         std::cerr << argv[0] << " {input_file_path} {output_file_path}\n";
         std::cerr << "[-{filter_name_1} [filter_argument_1] [filter_argument_2] ...]\n";
         std::cerr << "[-{filter_name_2} [filter_argument_1] [filter_argument_2] ...] ...\n";
-
         return ErrorCode::INVALID_ARGUMENTS;
     }
 

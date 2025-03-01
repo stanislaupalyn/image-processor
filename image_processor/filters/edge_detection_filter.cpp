@@ -67,24 +67,3 @@ void EdgeDetectionFilter::Apply(Image& image) {
 
     image.GetData() = new_data;
 }
-
-Filter* ProduceEdgeDetectionFilter(const FilterSettings& filter_settings, ErrorCode& error) {
-    assert(filter_settings.name_ == "edge");
-
-    if (filter_settings.arguments_.size() != 1) {
-        std::cerr << "Wrong number of arguments for edge detection filter.\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-
-    double threshold = std::stod(filter_settings.arguments_[0]);
-    if (threshold < 0 || threshold > 1) {
-        std::cerr << "Threshold in the edge detection filter should be in segment [0, 1].\n";
-        error = ErrorCode::INVALID_ARGUMENTS;
-        return nullptr;
-    }
-
-    Filter* filter_ptr = new EdgeDetectionFilter(threshold);
-    error = ErrorCode::SUCCESS;
-    return filter_ptr;
-}
