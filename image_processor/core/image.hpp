@@ -4,6 +4,13 @@
 
 #include "rgb_color.hpp"
 
+/**
+ * @class Image
+ * @brief Represents an image with pixel data and dimensions.
+ *
+ * This class encapsulates an image's height, width, and pixel data,
+ * providing methods to access and manipulate the image's contents.
+ */
 class Image {
 public:
     Image() : height_{0}, width_{0}, data_{0} {

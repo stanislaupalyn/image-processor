@@ -9,6 +9,13 @@
 
 using FilterProducer = std::function<Filter*(const FilterSettings&, ErrorCode&)>;
 
+/**
+ * @class FilterFactory
+ * @brief Factory class responsible for creating image filters.
+ *
+ * This class manages filter producers and creates filters based on provided settings.
+ * It stores filter producers and allows them to be accessed by filter name.
+ */
 class FilterFactory {
 public:
     void AddProducer(std::string name, FilterProducer filter_producer);

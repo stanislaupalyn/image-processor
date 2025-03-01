@@ -2,6 +2,13 @@
 
 #include "filters/filter.hpp"
 
+/**
+ * @class Pipeline
+ * @brief Manages and applies a sequence of image filters.
+ *
+ * The Pipeline class stores a series of filters and applies them sequentially
+ * to an image. Filters are applied in the order they are added.
+ */
 class Pipeline {
 public:
     ~Pipeline();

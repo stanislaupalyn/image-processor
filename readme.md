@@ -91,9 +91,8 @@ Applies a fisheye distortion effect centered at `(center_x, center_y)`.
 
 ### Notes
 
-- Ensure the input image is in BMP format.
-- Filters requiring parameters must be provided with valid values.
-- Filters are applied sequentially in the order they are specified.
+- Testing is performed using an external Python script located in the `test_script` folder.
+- Doxygen documentation has been provided. Check the `docs` folder.
 
 Happy image processing!
 

@@ -7,6 +7,14 @@
 #include "filter_settings.hpp"
 #include "main/error_code.hpp"
 
+/**
+ * @class GaussianBlurFilter
+ * @brief A filter that applies Gaussian blur to an image.
+ *
+ * This filter applies a Gaussian blur to an image, which is a common image
+ * processing technique used to reduce noise and detail. The blur strength is
+ * controlled by the sigma value, which defines the width of the Gaussian distribution.
+ */
 class GaussianBlurFilter : public Filter {
 public:
     explicit GaussianBlurFilter(double sigma);

@@ -8,10 +8,12 @@
 
 #include "core/rgb_color.hpp"
 
-/// Class supports BMP file storage.
-/// Methods for writing content to a specific file path
-/// and reading from a specific file are implemented
-
+/**
+ * @class BMP
+ * @brief A class for handling BMP image files.
+ *
+ * This class provides methods to read, write, and manipulate BMP images.
+ */
 class BMP {
 public:
     static constexpr uint16_t BMP_SIGNATURE = 0x4D42;   // NOLINT
@@ -45,8 +47,18 @@ public:
     ~BMP() {
     }
 
+    /**
+     * @brief Reads a BMP file from disk.
+     * @param filename The path to the BMP file.
+     * @throws std::runtime_error if the file cannot be read.
+     */
     void ReadFromFile(const std::string& filename);
 
+    /**
+     * @brief Writes the BMP image to a file.
+     * @param filename The path to save the BMP file.
+     * @throws std::runtime_error if the file cannot be written.
+     */
     void WriteToFile(const std::string& filename) const;
 
     BMPHeader& GetBMPHeader() {
@@ -83,7 +95,6 @@ public:
     }
 
 protected:
-    /// File I/O
     static std::fstream OpenToRead(const std::string& filename);
     static std::fstream OpenToWrite(const std::string& filename);
     void ReadBmp(std::fstream& file);

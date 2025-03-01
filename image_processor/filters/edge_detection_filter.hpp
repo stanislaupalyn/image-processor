@@ -4,6 +4,14 @@
 #include "filter_settings.hpp"
 #include "main/error_code.hpp"
 
+/**
+ * @class EdgeDetectionFilter
+ * @brief A filter that applies edge detection to an image.
+ *
+ * This filter applies an edge detection algorithm (using a 3x3 kernel matrix) to
+ * an image. The filter detects edges in the image and applies a threshold to
+ * determine which edges are visible.
+ */
 class EdgeDetectionFilter : public Filter {
 public:
     explicit EdgeDetectionFilter(double threshold) : threshold_{threshold} {

@@ -4,6 +4,14 @@
 #include "filter_settings.hpp"
 #include "main/error_code.hpp"
 
+/**
+ * @class FisheyeFilter
+ * @brief A filter that applies a fisheye lens effect to an image.
+ *
+ * This filter distorts the image using a fisheye lens transformation, creating
+ * a bulging, spherical effect. The transformation is controlled by parameters
+ * such as alpha (strength of the effect) and the center of the distortion.
+ */
 class FisheyeFilter : public Filter {
 public:
     explicit FisheyeFilter(double alpha, double center_x, double center_y)

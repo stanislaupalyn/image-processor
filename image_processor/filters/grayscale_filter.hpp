@@ -4,6 +4,13 @@
 #include "filter_settings.hpp"
 #include "main/error_code.hpp"
 
+/**
+ * @class GrayscaleFilter
+ * @brief A filter that converts an image to grayscale.
+ *
+ * This filter converts an image to grayscale by computing a weighted sum of the
+ * red, green, and blue channels.
+ */
 class GrayscaleFilter : public Filter {
 public:
     GrayscaleFilter() {
