@@ -16,10 +16,7 @@ private:
     BMPImageConverter bmp_image_converter_;
 
 public:
-    /// Initial app setup. Adds a mapping in the FilterFactory between
-    /// each filter's command line argument name and corresponding filter producer
     void Config();
 
-    /// Called only once. Starts the application from command line arguments
     ErrorCode Start(int argc, char* argv[]);
 };

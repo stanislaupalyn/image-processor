@@ -6,7 +6,11 @@ bool CommandLineParser::IsFilterName(const std::string& s) {
 
 ErrorCode CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& app_settings) {
     if (argc < 3) {
-        std::cerr << "Input or output file is not specified. Usage" << argv[0] << " <input.bmp> <output.bmp>\n";
+        std::cerr << "Input or output file is not specified. Usage:\n";
+        std::cerr << argv[0] << " {input_file_path} {output_file_path}\n";
+        std::cerr << "[-{filter_name_1} [filter_argument_1] [filter_argument_2] ...]\n";
+        std::cerr << "[-{filter_name_2} [filter_argument_1] [filter_argument_2] ...] ...\n";
+
         return ErrorCode::INVALID_ARGUMENTS;
     }
 

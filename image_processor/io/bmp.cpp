@@ -136,8 +136,6 @@ void BMP::WriteData(std::fstream& file) const {
 
     file.seekg(bmp_header_.offset);
 
-    // data_.resize(dib_header_.height * dib_header_.width);
-
     std::vector<uint8_t> padding;
     if ((dib_header_.width * 3) % 4) {
         int32_t need = 4 - (dib_header_.width * 3) % 4;

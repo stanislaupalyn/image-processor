@@ -4,11 +4,6 @@
 
 #include "rgb_color.hpp"
 
-/// Class that represents an image stored in a bitmap.
-/// Each pixel color is specified in data_ vector of RGBReal
-/// Method for accessing color of certain pixel is implemented by
-/// using parentheses perator of two arguments, coordinates of the pixel
-
 class Image {
 public:
     Image() : height_{0}, width_{0}, data_{0} {
