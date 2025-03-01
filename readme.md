@@ -89,7 +89,35 @@ Applies a fisheye distortion effect centered at `(center_x, center_y)`.
 
 ---
 
-### Notes
+## Steps to build
+
+It uses CMake.
+Steps to Build
+
+- Clone the repository (if you haven't already):
+    ```
+    git clone https://your-repository-url.git
+    cd your-repository-folder
+    ```
+- Create a build directory
+    ```
+    mkdir build
+    cd build
+    ```
+
+- Run CMake to generate the build system:
+    ```
+    cmake ..
+    cmake --build .
+    ```
+  This will generate the executable in the build directory.
+
+- Run the program: After building, you can run the program from the build directory:
+    ```
+      ./image_processor {input_file_path} {output_file_path} [-{filter_name} [filter_arguments]]
+    ```
+
+## Notes
 
 - Testing is performed using an external Python script located in the `test_script` folder.
 - Doxygen documentation has been provided. Check the `docs` folder.
