@@ -5,7 +5,7 @@ void FilterFactory::AddProducer(std::string name, FilterProducer* filter_produce
 }
 FilterProducer* FilterFactory::GetProducer(const std::string& name) {
     if (!producer_by_name_.contains(name)) {
-        return nullptr;
+        throw std::invalid_argument("Filter with the given name does not exist.\n");
     }
     return producer_by_name_[name];
 }

@@ -1,10 +1,5 @@
 #include "negative_filter.hpp"
 
-#include <cassert>
-#include <iostream>
-
-#include "main/error_code.hpp"
-
 void NegativeFilter::Apply(Image& image) {
     for (size_t row = 0; row < image.GetHeight(); ++row) {
         for (size_t col = 0; col < image.GetWidth(); ++col) {

@@ -1,9 +1,6 @@
 #include "fisheye_filter.hpp"
 
-#include <cassert>
 #include <iostream>
-
-#include "main/error_code.hpp"
 
 RGBReal FisheyeFilter::GetPixel(double x, double y, const Image& image) {
     if (x < 0 || y < 0 || std::floor(x) >= static_cast<double>(image.GetHeight()) ||
@@ -25,9 +22,8 @@ double FisheyeFilter::CalcShift(double x_left, double x_right, double cx) const 
 
     if (res_mid < 0) {
         return CalcShift(x_mid, x_right, cx);
-    } else {
-        return CalcShift(x_left, x_mid, cx);
     }
+    return CalcShift(x_left, x_mid, cx);
 }
 
 double FisheyeFilter::GetRadialX(double x, double y) const {

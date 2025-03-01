@@ -31,5 +31,5 @@ public:
      */
     void Config();
 
-    ErrorCode Start(int argc, char* argv[]);
+    void Start(int argc, char* argv[]);
 };

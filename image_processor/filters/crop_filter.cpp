@@ -1,9 +1,6 @@
 #include "crop_filter.hpp"
 
-#include <cassert>
 #include <iostream>
-
-#include "main/error_code.hpp"
 
 void CropFilter::Apply(Image& image) {
     if (image.GetHeight() > height_) {

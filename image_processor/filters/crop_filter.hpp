@@ -1,8 +1,6 @@
 #pragma once
 
 #include "filter.hpp"
-#include "filter_settings.hpp"
-#include "main/error_code.hpp"
 
 /**
  * @class CropFilter

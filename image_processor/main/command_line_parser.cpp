@@ -1,16 +1,18 @@
 #include "command_line_parser.hpp"
 
+#include <string>
+
 bool CommandLineParser::IsFilterName(const std::string& s) {
     return s.size() > 1 && s[0] == '-' && std::all_of(s.begin() + 1, s.end(), [](char c) { return islower(c); });
 }
 
-ErrorCode CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& app_settings) {
+void CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& app_settings) {
     if (argc < 3) {
-        std::cerr << "Input or output file is not specified. Usage:\n";
-        std::cerr << argv[0] << " {input_file_path} {output_file_path}\n";
-        std::cerr << "[-{filter_name_1} [filter_argument_1] [filter_argument_2] ...]\n";
-        std::cerr << "[-{filter_name_2} [filter_argument_1] [filter_argument_2] ...] ...\n";
-        return ErrorCode::INVALID_ARGUMENTS;
+
+        throw std::invalid_argument("Input or output file is not specified.\nUsage: " + std::string(argv[0]) +
+                                    " {input_file_path} {output_file_path}\n" +
+                                    "[-{filter_name_1} [filter_argument_1] [filter_argument_2] ...]\n" +
+                                    "[-{filter_name_2} [filter_argument_1] [filter_argument_2] ...] ...\n");
     }
 
     app_settings.input_file_path_ = argv[1];
@@ -29,7 +31,11 @@ ErrorCode CommandLineParser::Parse(int argc, char* argv[], ApplicationSettings& 
 
             i = ptr - 1;
             app_settings.filters_settings_.push_back(filter_settings);
+        } else {
+            throw std::invalid_argument("Incorrect argument format.\nUsage: " + std::string(argv[0]) +
+                                        " {input_file_path} {output_file_path}\n" +
+                                        "[-{filter_name_1} [filter_argument_1] [filter_argument_2] ...]\n" +
+                                        "[-{filter_name_2} [filter_argument_1] [filter_argument_2] ...] ...\n");
         }
     }
-    return ErrorCode::SUCCESS;
 }

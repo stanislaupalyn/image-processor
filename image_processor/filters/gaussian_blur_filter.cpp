@@ -2,9 +2,6 @@
 
 #include <cassert>
 #include <iostream>
-#include <stdexcept>
-
-#include "main/error_code.hpp"
 
 GaussianBlurFilter::GaussianBlurFilter(double sigma) {
     size_t size = static_cast<size_t>(ceil(SIGMA_SIZE_CONST * sigma));

@@ -1,10 +1,5 @@
 #include "sharpening_filter.hpp"
 
-#include <cassert>
-#include <iostream>
-
-#include "main/error_code.hpp"
-
 void SharpeningFilter::Apply(Image& image) {
     std::vector<RGBReal> new_data(image.GetData().size());
 

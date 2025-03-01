@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "application_settings.hpp"
-#include "error_code.hpp"
 
 /**
  * @class CommandLineParser
@@ -26,7 +25,7 @@ public:
      * @param app_settings Reference to an ApplicationSettings object to store parsed values.
      * @return An ErrorCode indicating success or failure of the parsing operation.
      */
-    static ErrorCode Parse(int argc, char* argv[], ApplicationSettings& app_settings);
+    static void Parse(int argc, char* argv[], ApplicationSettings& app_settings);
 
 protected:
     static bool IsFilterName(const std::string& s);

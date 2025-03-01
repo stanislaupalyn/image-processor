@@ -1,8 +1,6 @@
 #pragma once
 
 #include "filter.hpp"
-#include "filter_settings.hpp"
-#include "main/error_code.hpp"
 
 /**
  * @class FisheyeFilter
@@ -27,7 +25,7 @@ protected:
     double y_scale_, y_shift_;
 
     static RGBReal GetPixel(double x, double y, const Image& image);
-    double CalcShift(double x1, double x2, double cx) const;
+    double CalcShift(double x_left, double x_right, double cx) const;
     double GetRadialX(double x, double y) const;
     double GetRadialY(double x, double y) const;
 };

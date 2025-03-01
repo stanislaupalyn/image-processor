@@ -1,10 +1,8 @@
 #include "edge_detection_filter.hpp"
 
-#include <cassert>
 #include <iostream>
 
 #include "filters/grayscale_filter.hpp"
-#include "main/error_code.hpp"
 
 void EdgeDetectionFilter::Apply(Image& image) {
     GrayscaleFilter gs;
