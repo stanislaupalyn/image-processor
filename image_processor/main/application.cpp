@@ -26,8 +26,7 @@ void Application::Start(int argc, char** argv) {
         cl_parser_.Parse(argc, argv, app_settings_);
 
         for (const FilterSettings& filter_settings : app_settings_.filters_settings_) {
-            FilterProducer* filter_producer = f_factory_.GetProducer(filter_settings.name_);
-            pipeline_.AddFilter(filter_producer->Produce(filter_settings));
+            pipeline_.AddFilter(f_factory_.GetProducer(filter_settings.name_)->Produce(filter_settings));
         }
 
         BMP bmp;
