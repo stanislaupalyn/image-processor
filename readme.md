@@ -85,7 +85,7 @@ Applies a [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur) to the im
 
 Applies a fisheye distortion effect centered at `(center_x, center_y)`.
 
-- `alpha` determines the distortion strength and must satisfy: `0 ≤ alpha ≤ min(center_x, center_y)`.
+- `alpha` determines the distortion strength and must satisfy: `0 ≤ alpha < min(center_x, center_y)`.
 
 ---
 
