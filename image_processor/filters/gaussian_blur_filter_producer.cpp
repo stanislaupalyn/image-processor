@@ -4,7 +4,7 @@
 
 #include "gaussian_blur_filter.hpp"
 
-Filter* GaussianBlurFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> GaussianBlurFilterProducer::Produce(const FilterSettings& filter_settings) {
     assert(filter_settings.name_ == "blur");
 
     if (filter_settings.arguments_.size() != 1) {
@@ -20,6 +20,5 @@ Filter* GaussianBlurFilterProducer::Produce(const FilterSettings& filter_setting
                                     std::to_string(GaussianBlurFilter::MAX_SIGMA_VALUE) +
                                     ") for the Gaussian blur filter.\n");
     }
-    Filter* filter_ptr = new GaussianBlurFilter(sigma);
-    return filter_ptr;
+    return std::make_unique<GaussianBlurFilter>(sigma);
 }

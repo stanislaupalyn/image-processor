@@ -96,8 +96,8 @@ Steps to Build
 
 - Clone the repository (if you haven't already):
     ```
-    git clone https://your-repository-url.git
-    cd your-repository-folder
+    git clone https://github.com/stanislaupalyn/image-processor.git
+    cd image-processor
     ```
 - Create a build directory
     ```

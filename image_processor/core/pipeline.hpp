@@ -11,12 +11,11 @@
  */
 class Pipeline {
 public:
-    ~Pipeline();
-    void AddFilter(Filter* filter) {
-        filters_.push_back(filter);
+    void AddFilter(std::unique_ptr<Filter> filter) {
+        filters_.push_back(std::move(filter));
     }
     void ApplyPipeline(Image& image) const;
 
 private:
-    std::vector<Filter*> filters_;
+    std::vector<std::unique_ptr<Filter>> filters_;
 };

@@ -4,7 +4,7 @@
 
 #include "fisheye_filter.hpp"
 
-Filter* FisheyeFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> FisheyeFilterProducer::Produce(const FilterSettings& filter_settings) {
     assert(filter_settings.name_ == "fisheye");
 
     if (filter_settings.arguments_.size() != 3) {
@@ -26,6 +26,5 @@ Filter* FisheyeFilterProducer::Produce(const FilterSettings& filter_settings) {
             "Alpha in the fisheye filter should be strictly less than minimal of (center_x, center_y)\n");
     }
 
-    Filter* filter_ptr = new FisheyeFilter(alpha, center_x, center_y);
-    return filter_ptr;
+    return std::make_unique<FisheyeFilter>(alpha, center_x, center_y);
 }

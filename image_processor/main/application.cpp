@@ -9,13 +9,13 @@
 #include "filters/sharpening_filter_producer.hpp"
 
 void Application::Config() {
-    f_factory_.AddProducer("crop", new CropFilterProducer());
-    f_factory_.AddProducer("gs", new GrayscaleFilterProducer());
-    f_factory_.AddProducer("neg", new NegativeFilterProducer());
-    f_factory_.AddProducer("sharp", new SharpeningFilterProducer());
-    f_factory_.AddProducer("edge", new EdgeDetectionFilterProducer());
-    f_factory_.AddProducer("blur", new GaussianBlurFilterProducer());
-    f_factory_.AddProducer("fisheye", new FisheyeFilterProducer());
+    f_factory_.AddProducer("crop", std::make_unique<CropFilterProducer>());
+    f_factory_.AddProducer("gs", std::make_unique<GrayscaleFilterProducer>());
+    f_factory_.AddProducer("neg", std::make_unique<NegativeFilterProducer>());
+    f_factory_.AddProducer("sharp", std::make_unique<SharpeningFilterProducer>());
+    f_factory_.AddProducer("edge", std::make_unique<EdgeDetectionFilterProducer>());
+    f_factory_.AddProducer("blur", std::make_unique<GaussianBlurFilterProducer>());
+    f_factory_.AddProducer("fisheye", std::make_unique<FisheyeFilterProducer>());
 }
 
 void Application::Start(int argc, char** argv) {

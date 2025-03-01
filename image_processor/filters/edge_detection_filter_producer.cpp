@@ -4,7 +4,7 @@
 
 #include "edge_detection_filter.hpp"
 
-Filter* EdgeDetectionFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> EdgeDetectionFilterProducer::Produce(const FilterSettings& filter_settings) {
     assert(filter_settings.name_ == "edge");
 
     if (filter_settings.arguments_.size() != 1) {
@@ -16,6 +16,5 @@ Filter* EdgeDetectionFilterProducer::Produce(const FilterSettings& filter_settin
         throw std::invalid_argument("Threshold in the edge detection filter should be in segment [0, 1].\n");
     }
 
-    Filter* filter_ptr = new EdgeDetectionFilter(threshold);
-    return filter_ptr;
+    return std::make_unique<EdgeDetectionFilter>(threshold);
 }

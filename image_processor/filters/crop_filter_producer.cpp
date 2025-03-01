@@ -4,7 +4,7 @@
 
 #include "crop_filter.hpp"
 
-Filter* CropFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> CropFilterProducer::Produce(const FilterSettings& filter_settings) {
     assert(filter_settings.name_ == "crop");
 
     if (filter_settings.arguments_.size() != 2) {
@@ -17,6 +17,5 @@ Filter* CropFilterProducer::Produce(const FilterSettings& filter_settings) {
         throw std::invalid_argument("Width and height should be positive in crop filter.\n");
     }
 
-    Filter* filter_ptr = new CropFilter(static_cast<size_t>(width), static_cast<size_t>(height));
-    return filter_ptr;
+    return std::make_unique<CropFilter>(static_cast<size_t>(width), static_cast<size_t>(height));
 }
