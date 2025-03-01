@@ -74,19 +74,6 @@ public:
         return dib_header_;
     }
 
-    int32_t GetHeight() const {
-        return dib_header_.height;
-    }
-    int32_t& GetHeight() {
-        return dib_header_.height;
-    }
-    int32_t GetWidth() const {
-        return dib_header_.width;
-    }
-    int32_t& GetWidth() {
-        return dib_header_.width;
-    }
-
     std::vector<RGB24>& GetData() {
         return data_;
     }

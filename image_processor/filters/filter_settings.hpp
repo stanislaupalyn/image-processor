@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 /**
  * @struct FilterSettings
  * @brief Structure to hold filter settings.
