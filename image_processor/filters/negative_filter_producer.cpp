@@ -4,7 +4,7 @@
 
 #include "negative_filter.hpp"
 
-std::unique_ptr<Filter> NegativeFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> NegativeFilterProducer::Produce(const FilterSettings& filter_settings) const {
     assert(filter_settings.name_ == "neg");
 
     if (!filter_settings.arguments_.empty()) {

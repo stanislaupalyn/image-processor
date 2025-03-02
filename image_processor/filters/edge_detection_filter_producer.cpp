@@ -4,7 +4,7 @@
 
 #include "edge_detection_filter.hpp"
 
-std::unique_ptr<Filter> EdgeDetectionFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> EdgeDetectionFilterProducer::Produce(const FilterSettings& filter_settings) const {
     assert(filter_settings.name_ == "edge");
 
     if (filter_settings.arguments_.size() != 1) {

@@ -4,7 +4,7 @@
 
 #include "crop_filter.hpp"
 
-std::unique_ptr<Filter> CropFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> CropFilterProducer::Produce(const FilterSettings& filter_settings) const {
     assert(filter_settings.name_ == "crop");
 
     if (filter_settings.arguments_.size() != 2) {

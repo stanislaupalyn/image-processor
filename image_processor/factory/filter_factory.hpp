@@ -13,7 +13,7 @@
 class FilterFactory {
 public:
     void AddProducer(std::string name, std::unique_ptr<FilterProducer> filter_producer);
-    const std::unique_ptr<FilterProducer>& GetProducer(const std::string& name);
+    const FilterProducer& GetProducer(const std::string& name);
 
 private:
     std::map<std::string, std::unique_ptr<FilterProducer>> producer_by_name_;

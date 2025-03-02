@@ -1,7 +1,8 @@
 #pragma once
 
-#include "filters/filter.hpp"
 #include <memory>
+
+#include "filters/filter.hpp"
 
 /**
  * @class Pipeline

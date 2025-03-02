@@ -4,7 +4,7 @@
 
 #include "fisheye_filter.hpp"
 
-std::unique_ptr<Filter> FisheyeFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> FisheyeFilterProducer::Produce(const FilterSettings& filter_settings) const {
     assert(filter_settings.name_ == "fisheye");
 
     if (filter_settings.arguments_.size() != 3) {

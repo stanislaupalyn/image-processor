@@ -4,7 +4,7 @@
 
 #include "gaussian_blur_filter.hpp"
 
-std::unique_ptr<Filter> GaussianBlurFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> GaussianBlurFilterProducer::Produce(const FilterSettings& filter_settings) const {
     assert(filter_settings.name_ == "blur");
 
     if (filter_settings.arguments_.size() != 1) {

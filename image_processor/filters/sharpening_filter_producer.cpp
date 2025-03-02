@@ -4,7 +4,7 @@
 
 #include "sharpening_filter.hpp"
 
-std::unique_ptr<Filter> SharpeningFilterProducer::Produce(const FilterSettings& filter_settings) {
+std::unique_ptr<Filter> SharpeningFilterProducer::Produce(const FilterSettings& filter_settings) const {
     assert(filter_settings.name_ == "sharp");
 
     if (!filter_settings.arguments_.empty()) {

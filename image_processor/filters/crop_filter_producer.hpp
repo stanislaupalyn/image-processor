@@ -11,5 +11,5 @@
  */
 class CropFilterProducer : public FilterProducer {
 public:
-    std::unique_ptr<Filter> Produce(const FilterSettings& filter_settings) override;
+    std::unique_ptr<Filter> Produce(const FilterSettings& filter_settings) const override;
 };

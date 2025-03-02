@@ -15,5 +15,5 @@
 class FilterProducer {
 public:
     virtual ~FilterProducer() = default;
-    virtual std::unique_ptr<Filter> Produce(const FilterSettings&) = 0;
+    virtual std::unique_ptr<Filter> Produce(const FilterSettings&) const = 0;
 };
