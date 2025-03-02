@@ -1,6 +1,6 @@
 #include "fisheye_filter.hpp"
 
-#include <iostream>
+#include <cmath>
 
 RGBReal FisheyeFilter::GetPixel(double x, double y, const Image& image) {
     if (x < 0 || y < 0 || std::floor(x) >= static_cast<double>(image.GetHeight()) ||

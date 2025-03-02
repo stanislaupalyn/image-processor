@@ -1,5 +1,7 @@
 #include "application.hpp"
 
+#include <chrono>
+
 #include "filters/crop_filter_producer.hpp"
 #include "filters/edge_detection_filter_producer.hpp"
 #include "filters/fisheye_filter_producer.hpp"

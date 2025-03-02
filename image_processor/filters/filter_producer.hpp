@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "filter.hpp"
 #include "filter_settings.hpp"
 

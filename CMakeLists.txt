@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.30)
 project(image_processor)
 
+add_compile_options(-include cstddef)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 

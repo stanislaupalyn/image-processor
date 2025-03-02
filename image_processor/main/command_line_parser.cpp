@@ -1,5 +1,6 @@
 #include "command_line_parser.hpp"
 
+#include <algorithm>
 #include <string>
 
 bool CommandLineParser::IsFilterName(const std::string& s) {

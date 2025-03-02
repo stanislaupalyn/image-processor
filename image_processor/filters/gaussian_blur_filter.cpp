@@ -1,7 +1,7 @@
 #include "gaussian_blur_filter.hpp"
 
 #include <cassert>
-#include <iostream>
+#include <cmath>
 
 GaussianBlurFilter::GaussianBlurFilter(double sigma) {
     size_t size = static_cast<size_t>(ceil(SIGMA_SIZE_CONST * sigma));
